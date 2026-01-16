@@ -1,0 +1,29 @@
+# Sentinel Intelligence Engine Dependencies
+
+# Web Scraping
+playwright>=1.40.0
+playwright-stealth>=1.0.6
+beautifulsoup4>=4.12.0
+feedparser>=6.0.10
+html2text>=2024.2.26
+
+# Gmail API
+google-api-python-client>=2.111.0
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=1.2.0
+
+# PDF Processing
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0
+
+# LLM Integration
+google-generativeai>=0.3.0
+
+# Data Processing
+pandas>=2.1.0
+python-dateutil>=2.8.0
+
+# Utilities
+python-dotenv>=1.0.0
+rich>=13.7.0
+tenacity>=8.2.0
