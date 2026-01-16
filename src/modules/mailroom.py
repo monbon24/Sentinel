@@ -31,8 +31,11 @@ except ImportError:
 
 # Import configuration
 import sys
+
+# Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from src.config import GMAIL_QUERIES, MAX_EMAIL_RESULTS, DOCS_DIR
+
+from config import GMAIL_QUERIES, MAX_EMAIL_RESULTS, DOCS_DIR
 
 
 # Gmail API scopes

@@ -20,13 +20,21 @@ except ImportError:
     PLAYWRIGHT_AVAILABLE = False
     print("[!] Playwright not installed. Deep web scraping disabled.")
 
-# Try to import playwright-stealth
+# Try to import playwright-stealth (handle both v1 and v2 APIs)
+STEALTH_AVAILABLE = False
+stealth_sync = None
 try:
-    from playwright_stealth import stealth_sync
+    # v2.0+ API
+    from playwright_stealth import Stealth
+    stealth_sync = Stealth().sync
     STEALTH_AVAILABLE = True
 except ImportError:
-    STEALTH_AVAILABLE = False
-    print("[!] playwright-stealth not installed. Stealth mode disabled.")
+    try:
+        # v1.x API
+        from playwright_stealth import stealth_sync
+        STEALTH_AVAILABLE = True
+    except ImportError:
+        print("[!] playwright-stealth not available. Stealth mode disabled.")
 
 from bs4 import BeautifulSoup
 import html2text
@@ -34,8 +42,11 @@ import html2text
 # Import configuration
 import sys
 import os
+
+# Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from src.config import (
+
+from config import (
     RSS_FEEDS, SCRAPE_TARGETS, CATEGORY_KEYWORDS, 
     METRIC_PATTERNS, MAX_RSS_ITEMS_PER_FEED, MAX_DEEP_WEB_PAGES, USER_AGENT
 )

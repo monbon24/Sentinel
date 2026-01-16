@@ -20,8 +20,11 @@ except ImportError:
 
 # Import configuration
 import sys
+
+# Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from src.config import GEMINI_MODEL, OUTPUT_DIR, REPORT_FILENAME_TEMPLATE
+
+from config import GEMINI_MODEL, OUTPUT_DIR, REPORT_FILENAME_TEMPLATE
 
 
 # Synthesis prompt template
